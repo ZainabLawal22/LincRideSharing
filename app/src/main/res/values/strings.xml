@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LincRide</string>
+    <string name="stop_requests">Stop new requests</string>
+    <string name="active_campaign">1 Active campaign</string>
+    <string name="choose_ride_mode">Choose your ride mode</string>
+    <string name="join_ride">Join a Ride</string>
+    <string name="book_seat">Book your seat</string>
+    <string name="offer_ride">Offer Ride</string>
+    <string name="share_trip">Share your trip</string>
+    <string name="where_to">Where to?</string>
+    <string name="emergency">Emergency</string>
+    <string name="passenger">Passenger</string>
+    <string name="get_to_pickup">Get to pickup...</string>
+    <string name="rider_arriving">Rider is arriving...</string>
+    <string name="heading_to">Heading to</string>
+    <string name="trip_complete">Trip Complete! Thank You.</string>
+    <string name="successful_trip">Another successful trip, well done!</string>
+    <string name="rate_passengers">Rate your passengers</string>
+    <string name="earnings_for_trip">Earnings for This Trip</string>
+    <string name="net_earnings">Net Earnings</string>
+    <string name="bonus">Bonus</string>
+    <string name="commission">Linc Commission</string>
+    <string name="total">Total</string>
+    <string name="new_trip">New Trip</string>
+    <string name="earnings_history">Earnings History</string>
+    <string name="share_ride_info">Share Ride Info</string>
+    <string name="pickup_point">Pick-up point</string>
+    <string name="destination">Destination</string>
+    <string name="available_seats">Available seats</string>
+    <string name="passengers_accepted">Passengers accepted</string>
+    <string name="rate_now">Rate now</string>
+    <string name="didnt_show">Didn\'t show</string>
+    <string name="picked_up">Picked up</string>
+    <string name="sos">SOS</string>
+</resources>
