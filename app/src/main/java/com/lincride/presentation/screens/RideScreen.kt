@@ -6,11 +6,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.android.gms.maps.model.LatLng
+import com.lincride.domain.model.Driver
+import com.lincride.domain.model.Passenger
 import com.lincride.domain.model.RideEvent
 import com.lincride.domain.model.RideState
 import com.lincride.presentation.components.*
+import com.lincride.presentation.theme.LincRideTheme
 import com.lincride.presentation.viewmodel.RideViewModel
 
 /**
@@ -136,3 +141,158 @@ fun RideScreen(
         }
     }
 }
+
+
+// Preview for different states
+@Preview(showBackground = true, showSystemUi = true, name = "Idle State")
+@Composable
+private fun RideScreenIdlePreview() {
+    LincRideTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            MapScreen(
+                carPosition = LatLng(6.5244, 3.3792),
+                routeWaypoints = emptyList(),
+                onOfferRideClick = { }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true, name = "Offering Ride")
+@Composable
+private fun RideScreenOfferingRidePreview() {
+    LincRideTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            MapScreen(
+                carPosition = LatLng(6.5244, 3.3792),
+                routeWaypoints = listOf(
+                    LatLng(6.5244, 3.3792),
+                    LatLng(6.5344, 3.3892),
+                    LatLng(6.5444, 3.3992)
+                ),
+                onOfferRideClick = { }
+            )
+
+            OfferRideBottomSheet(
+                progress = 0.5f,
+                driver = Driver(
+                    id = "1",
+                    name = "John Doe",
+                    rating = 3.14f,
+                    imageUrl = null
+                ),
+                passengers = listOf(
+                    Passenger(
+                        id = "1",
+                        name = "Jane Smith",
+                        rating = 4.9f,
+                        imageUrl = null
+                    ),
+                    Passenger(
+                        id = "2",
+                        name = "Mike Johnson",
+                        rating = 4.7f,
+                        imageUrl = null
+                    )
+                ),
+                estimatedTime = "4 mins",
+                pickupLocation = "Ladipo Oluwole Street",
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true, name = "At Pickup")
+@Composable
+private fun RideScreenAtPickupPreview() {
+    LincRideTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            MapScreen(
+                carPosition = LatLng(6.5244, 3.3792),
+                routeWaypoints = emptyList(),
+                onOfferRideClick = { }
+            )
+
+            PickupConfirmationBottomSheet(
+                passenger = Passenger(
+                    id = "1",
+                    name = "Jane Smith",
+                    rating = 4.9f,
+                    imageUrl = null
+                ),
+                pickupLocation = "Ladipo Oluwole Street",
+                waitingTime = "04:45",
+                onSwipe = { },
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true, name = "In Progress")
+@Composable
+private fun RideScreenInProgressPreview() {
+    LincRideTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            MapScreen(
+                carPosition = LatLng(6.5244, 3.3792),
+                routeWaypoints = listOf(
+                    LatLng(6.5244, 3.3792),
+                    LatLng(6.5344, 3.3892),
+                    LatLng(6.5444, 3.3992)
+                ),
+                onOfferRideClick = { }
+            )
+
+            HeadingToDestinationBottomSheet(
+                progress = 0.75f,
+                passengers = listOf(
+                    Passenger(
+                        id = "1",
+                        name = "Jane Smith",
+                        rating = 4.9f,
+                        imageUrl = null
+                    )
+                ),
+                estimatedTime = "4 mins",
+                destination = "Community Road",
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
+        }
+    }
+}
+
+//@Preview(showBackground = true, showSystemUi = true, name = "Trip Completed")
+//@Composable
+//private fun RideScreenCompletedPreview() {
+//    LincRideTheme {
+//        Box(modifier = Modifier.fillMaxSize()) {
+//            MapScreen(
+//                carPosition = LatLng(6.5244, 3.3792),
+//                routeWaypoints = emptyList(),
+//                onOfferRideClick = { }
+//            )
+//
+//            TripCompletedOverlay(
+//                earnings = 2500.0,
+//                passengers = listOf(
+//                    Passenger(
+//                        id = "1",
+//                        name = "Jane Smith",
+//                        rating = 4.9f,
+//                        imageUrl = null
+//                    ),
+//                    Passenger(
+//                        id = "2",
+//                        name = "Mike Johnson",
+//                        rating = 4.7f,
+//                        imageUrl = null
+//                    )
+//                ),
+//                onDismiss = { },
+//                onNewTrip = { }
+//            )
+//        }
+//    }
+//}

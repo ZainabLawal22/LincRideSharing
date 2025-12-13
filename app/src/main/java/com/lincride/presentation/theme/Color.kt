@@ -2,11 +2,18 @@ package com.lincride.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Primary colors from Figma design
-val LincBlue = Color(0xFF4285F4) // Primary blue for buttons and accents
-val LincGreen = Color(0xFF34C759) // Success green
-val LincRed = Color(0xFFFF3B30) // Error/warning red
-val LincOrange = Color(0xFFFF9500) // Warning orange
+
+val LincBlue = Color(0xFF4285F4)
+val LincLightBlue = Color(0xFF9EC0FF)
+val LincGreen = Color(0xFF2DFFA0)
+val LincRed = Color(0xFFFF3B30)
+val LincOrange = Color(0xFFFF9500)
+val LincDarkGreen= Color(0xFF383838)
+val LincLightGray= Color(0xFFB0B0B0)
+val LincBlack= Color(0xFF2A2A2A)
+
+
+
 
 // Background colors
 val BackgroundLight = Color(0xFFFFFFFF)
@@ -21,8 +28,8 @@ val TextTertiary = Color(0xFFC7C7CC)
 val TextWhite = Color(0xFFFFFFFF)
 
 // Map and overlay colors
-val MapOverlay = Color(0x80000000) // Semi-transparent black
-val BottomSheetScrim = Color(0x4D000000) // 30% black
+val MapOverlay = Color(0x80000000)
+val BottomSheetScrim = Color(0x4D000000)
 
 // Status colors
 val SuccessGreen = Color(0xFF34C759)
