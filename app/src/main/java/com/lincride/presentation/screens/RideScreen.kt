@@ -263,36 +263,3 @@ private fun RideScreenInProgressPreview() {
     }
 }
 
-//@Preview(showBackground = true, showSystemUi = true, name = "Trip Completed")
-//@Composable
-//private fun RideScreenCompletedPreview() {
-//    LincRideTheme {
-//        Box(modifier = Modifier.fillMaxSize()) {
-//            MapScreen(
-//                carPosition = LatLng(6.5244, 3.3792),
-//                routeWaypoints = emptyList(),
-//                onOfferRideClick = { }
-//            )
-//
-//            TripCompletedOverlay(
-//                earnings = 2500.0,
-//                passengers = listOf(
-//                    Passenger(
-//                        id = "1",
-//                        name = "Jane Smith",
-//                        rating = 4.9f,
-//                        imageUrl = null
-//                    ),
-//                    Passenger(
-//                        id = "2",
-//                        name = "Mike Johnson",
-//                        rating = 4.7f,
-//                        imageUrl = null
-//                    )
-//                ),
-//                onDismiss = { },
-//                onNewTrip = { }
-//            )
-//        }
-//    }
-//}
