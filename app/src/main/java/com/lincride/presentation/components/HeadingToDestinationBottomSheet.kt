@@ -1,25 +1,442 @@
 package com.lincride.presentation.components
 
+//import androidx.compose.foundation.background
+//import androidx.compose.foundation.layout.*
+//import androidx.compose.foundation.shape.CircleShape
+//import androidx.compose.foundation.shape.RoundedCornerShape
+//import androidx.compose.material.icons.Icons
+//import androidx.compose.material.icons.filled.Call
+//import androidx.compose.material.icons.filled.Warning
+//import androidx.compose.material3.*
+//import androidx.compose.runtime.Composable
+//import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.draw.clip
+//import androidx.compose.ui.graphics.Color
+//import androidx.compose.ui.text.font.FontWeight
+//import androidx.compose.ui.tooling.preview.Preview
+//import androidx.compose.ui.unit.dp
+//import com.lincride.domain.model.Passenger
+//import com.lincride.presentation.theme.*
+//
+///**
+// * Shows trip in progress with destination details
+// */
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun HeadingToDestinationBottomSheet(
+//    progress: Float,
+//    passengers: List<Passenger>,
+//    estimatedTime: String,
+//    destination: String,
+//    modifier: Modifier = Modifier
+//) {
+//    Surface(
+//        modifier = modifier.fillMaxWidth(),
+//        color = Color.White,
+//        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+//        shadowElevation = 16.dp
+//    ) {
+//        Column(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(20.dp)
+//        ) {
+//            // Drag handle
+//            Box(
+//                modifier = Modifier
+//                    .width(40.dp)
+//                    .height(4.dp)
+//                    .clip(RoundedCornerShape(2.dp))
+//                    .background(DividerColor)
+//                    .align(Alignment.CenterHorizontally)
+//            )
+//
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+//            // Action buttons row
+//            Row(
+//                modifier = Modifier.fillMaxWidth(),
+//                horizontalArrangement = Arrangement.spacedBy(12.dp)
+//            ) {
+//                // Emergency button
+//                Button(
+//                    onClick = { /* Handle emergency */ },
+//                    colors = ButtonDefaults.buttonColors(
+//                        containerColor = EmergencyButtonBlue
+//                    ),
+//                    shape = RoundedCornerShape(20.dp),
+//                    modifier = Modifier.weight(1f)
+//                ) {
+//                    Row(
+//                        verticalAlignment = Alignment.CenterVertically,
+//                        horizontalArrangement = Arrangement.Center,
+//                        modifier = Modifier.padding(vertical = 8.dp)
+//                    ) {
+//                        Icon(
+//                            imageVector = Icons.Default.Warning,
+//                            contentDescription = null,
+//                            modifier = Modifier.size(20.dp)
+//                        )
+//                        Spacer(modifier = Modifier.width(8.dp))
+//                        Text(
+//                            text = "Emergency",
+//                            style = MaterialTheme.typography.bodyMedium,
+//                            fontWeight = FontWeight.SemiBold
+//                        )
+//                    }
+//                }
+//
+//                // SOS button
+//                Button(
+//                    onClick = { /* Handle SOS */ },
+//                    colors = ButtonDefaults.buttonColors(
+//                        containerColor = EmergencyButtonBlue
+//                    ),
+//                    shape = RoundedCornerShape(20.dp),
+//                    modifier = Modifier.weight(1f)
+//                ) {
+//                    Text(
+//                        text = "SOS",
+//                        style = MaterialTheme.typography.bodyMedium,
+//                        fontWeight = FontWeight.SemiBold,
+//                        modifier = Modifier.padding(vertical = 8.dp)
+//                    )
+//                }
+//            }
+//
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+//            // Status text
+//            Text(
+//                text = "Heading to",
+//                style = MaterialTheme.typography.titleLarge,
+//                fontWeight = FontWeight.Bold
+//            )
+//
+//            Spacer(modifier = Modifier.height(8.dp))
+//
+//            // Progress bar with route info
+//            Column {
+//                Row(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    horizontalArrangement = Arrangement.SpaceBetween,
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Text(
+//                        text = "Starting from",
+//                        style = MaterialTheme.typography.labelMedium,
+//                        color = TextSecondary
+//                    )
+//
+//                    Text(
+//                        text = "Drop-off",
+//                        style = MaterialTheme.typography.labelMedium,
+//                        color = TextSecondary
+//                    )
+//                }
+//
+//                Spacer(modifier = Modifier.height(8.dp))
+//
+//                Row(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Box(
+//                        modifier = Modifier
+//                            .size(12.dp)
+//                            .clip(CircleShape)
+//                            .background(SuccessGreen)
+//                    )
+//
+//                    Spacer(modifier = Modifier.width(8.dp))
+//
+//                    LinearProgressIndicator(
+//                        progress = progress,
+//                        modifier = Modifier
+//                            .weight(1f)
+//                            .height(6.dp)
+//                            .clip(RoundedCornerShape(3.dp)),
+//                        color = ProgressBarGreen,
+//                        trackColor = DividerColor
+//                    )
+//
+//                    Spacer(modifier = Modifier.width(8.dp))
+//
+//                    Box(
+//                        modifier = Modifier
+//                            .size(12.dp)
+//                            .clip(CircleShape)
+//                            .background(Color.Black)
+//                    )
+//                }
+//
+//                Spacer(modifier = Modifier.height(8.dp))
+//
+//                Row(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    horizontalArrangement = Arrangement.SpaceBetween,
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Text(
+//                        text = "Ladipo Oluwole Street",
+//                        style = MaterialTheme.typography.bodyMedium,
+//                        fontWeight = FontWeight.Medium
+//                    )
+//
+//                    Text(
+//                        text = destination,
+//                        style = MaterialTheme.typography.bodyMedium,
+//                        fontWeight = FontWeight.Medium
+//                    )
+//                }
+//            }
+//
+//            Spacer(modifier = Modifier.height(12.dp))
+//
+//            // Time estimate
+//            Text(
+//                text = "Through Avenue 36 - $estimatedTime",
+//                style = MaterialTheme.typography.bodyMedium,
+//                color = TextSecondary
+//            )
+//
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+//            // Destination card
+//            Card(
+//                modifier = Modifier.fillMaxWidth(),
+//                colors = CardDefaults.cardColors(
+//                    containerColor = SurfaceLight
+//                ),
+//                shape = RoundedCornerShape(12.dp)
+//            ) {
+//                Row(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(16.dp),
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    Box(
+//                        modifier = Modifier
+//                            .size(12.dp)
+//                            .clip(CircleShape)
+//                            .background(Color.Black)
+//                    )
+//
+//                    Spacer(modifier = Modifier.width(12.dp))
+//
+//                    Column(modifier = Modifier.weight(1f)) {
+//                        Text(
+//                            text = "Destination",
+//                            style = MaterialTheme.typography.labelMedium,
+//                            color = TextSecondary
+//                        )
+//                        Text(
+//                            text = destination,
+//                            style = MaterialTheme.typography.bodyLarge,
+//                            fontWeight = FontWeight.Medium
+//                        )
+//                    }
+//
+//                    // Location icon
+//                    Box(
+//                        modifier = Modifier
+//                            .size(40.dp)
+//                            .clip(CircleShape)
+//                            .background(Color.White),
+//                        contentAlignment = Alignment.Center
+//                    ) {
+//                        Text(
+//                            text = "📍",
+//                            style = MaterialTheme.typography.titleMedium
+//                        )
+//                    }
+//                }
+//            }
+//
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+//            // Passengers info
+//            Row(
+//                modifier = Modifier.fillMaxWidth(),
+//                horizontalArrangement = Arrangement.SpaceBetween,
+//                verticalAlignment = Alignment.CenterVertically
+//            ) {
+//                Column {
+//                    Text(
+//                        text = "Available seats",
+//                        style = MaterialTheme.typography.labelMedium,
+//                        color = TextSecondary
+//                    )
+//                    Text(
+//                        text = "1",
+//                        style = MaterialTheme.typography.titleLarge,
+//                        fontWeight = FontWeight.Bold
+//                    )
+//                }
+//
+//                Column(horizontalAlignment = Alignment.End) {
+//                    Text(
+//                        text = "Passengers accepted",
+//                        style = MaterialTheme.typography.labelMedium,
+//                        color = TextSecondary
+//                    )
+//
+//                    // Passenger avatars
+//                    Row(
+//                        horizontalArrangement = Arrangement.spacedBy((-12).dp)
+//                    ) {
+//                        passengers.forEach { passenger ->
+//                            Box(
+//                                modifier = Modifier
+//                                    .size(32.dp)
+//                                    .clip(CircleShape)
+//                                    .background(LincGreen),
+//                                contentAlignment = Alignment.Center
+//                            ) {
+//                                Text(
+//                                    text = passenger.name.first().toString(),
+//                                    style = MaterialTheme.typography.bodySmall,
+//                                    fontWeight = FontWeight.Bold,
+//                                    color = Color.White
+//                                )
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+//            // Share Ride Info button
+//            OutlinedButton(
+//                onClick = { /* Handle share */ },
+//                modifier = Modifier.fillMaxWidth(),
+//                shape = RoundedCornerShape(12.dp)
+//            ) {
+//                Text(
+//                    text = "Share Ride Info",
+//                    style = MaterialTheme.typography.bodyLarge,
+//                    fontWeight = FontWeight.SemiBold,
+//                    modifier = Modifier.padding(vertical = 4.dp)
+//                )
+//            }
+//        }
+//    }
+//}
+//
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//private fun HeadingToDestinationBottomSheetPreview() {
+//    LincRideTheme {
+//        HeadingToDestinationBottomSheet(
+//            progress = 0.65f,
+//            passengers = listOf(
+//                Passenger(
+//                    id = "1",
+//                    name = "Jane Smith",
+//                    rating = 4.9f,
+//                    imageUrl = null
+//                ),
+//                Passenger(
+//                    id = "2",
+//                    name = "Mike Johnson",
+//                    rating = 4.7f,
+//                    imageUrl = null
+//                )
+//            ),
+//            estimatedTime = "4 mins",
+//            destination = "Community Road"
+//        )
+//    }
+//}
+
+//@Preview(showBackground = true, showSystemUi = true, name = "Low Progress")
+//@Composable
+//private fun HeadingToDestinationLowProgressPreview() {
+//    LincRideTheme {
+//        HeadingToDestinationBottomSheet(
+//            progress = 0.2f,
+//            passengers = listOf(
+//                Passenger(
+//                    id = "1",
+//                    name = "Sarah Williams",
+//                    rating = 5.0f,
+//                    imageUrl = null
+//                )
+//            ),
+//            estimatedTime = "8 mins",
+//            destination = "Victoria Island, Lagos"
+//        )
+//    }
+//}
+
+//@Preview(showBackground = true, showSystemUi = true, name = "High Progress")
+//@Composable
+//private fun HeadingToDestinationHighProgressPreview() {
+//    LincRideTheme {
+//        HeadingToDestinationBottomSheet(
+//            progress = 0.95f,
+//            passengers = listOf(
+//                Passenger(
+//                    id = "1",
+//                    name = "David Chen",
+//                    rating = 4.8f,
+//                    imageUrl = null
+//                ),
+//                Passenger(
+//                    id = "2",
+//                    name = "Emma Wilson",
+//                    rating = 4.6f,
+//                    imageUrl = null
+//                ),
+//                Passenger(
+//                    id = "3",
+//                    name = "Tom Anderson",
+//                    rating = 4.9f,
+//                    imageUrl = null
+//                )
+//            ),
+//            estimatedTime = "1 min",
+//            destination = "Lekki Phase 1"
+//        )
+//    }
+//}
+
+
+
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.lincride.domain.model.Passenger
 import com.lincride.presentation.theme.*
 
 /**
- * Shows trip in progress with destination details
+ * Figma Design: 14.4.1 - HEADING TO DROP OFF
+ * Shows trip in progress with drop-off timeline
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,6 +447,13 @@ fun HeadingToDestinationBottomSheet(
     destination: String,
     modifier: Modifier = Modifier
 ) {
+    // Animate progress
+    val animatedProgress by animateFloatAsState(
+        targetValue = progress,
+        animationSpec = tween(1000),
+        label = "progress"
+    )
+
     Surface(
         modifier = modifier.fillMaxWidth(),
         color = Color.White,
@@ -42,263 +466,192 @@ fun HeadingToDestinationBottomSheet(
                 .padding(20.dp)
         ) {
             // Drag handle
+//            Box(
+//                modifier = Modifier
+//                    .width(40.dp)
+//                    .height(4.dp)
+//                    .clip(RoundedCornerShape(2.dp))
+//                    .background(Color(0xFFE0E0E0))
+//                    .align(Alignment.CenterHorizontally)
+//            )
+
             Box(
                 modifier = Modifier
-                    .width(40.dp)
-                    .height(4.dp)
+                    .width(80.dp)
+                    .height(5.dp)
                     .clip(RoundedCornerShape(2.dp))
-                    .background(DividerColor)
+                    .background(LincLightGray)
                     .align(Alignment.CenterHorizontally)
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Action buttons row
+            // Emergency button with time badge
+//            Surface(
+//                color = LincBlue,
+//                shape = RoundedCornerShape(24.dp),
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(48.dp)
+//            ) {
+//                Row(
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                        .padding(horizontal = 16.dp),
+//                    verticalAlignment = Alignment.CenterVertically,
+//                    horizontalArrangement = Arrangement.SpaceBetween
+//                ) {
+//                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                        Icon(
+//                            imageVector = Icons.Default.Warning,
+//                            contentDescription = null,
+//                            tint = Color.White,
+//                            modifier = Modifier.size(18.dp)
+//                        )
+//                        Spacer(modifier = Modifier.width(8.dp))
+//                        Text(
+//                            text = "Emergency",
+//                            color = Color.White,
+//                            fontWeight = FontWeight.SemiBold,
+//                            fontSize = 14.sp
+//                        )
+//                    }
+//
+//                    // Time badge
+//                    Surface(
+//                        color = Color.White.copy(alpha = 0.3f),
+//                        shape = RoundedCornerShape(12.dp)
+//                    ) {
+//                        Text(
+//                            text = "13:50",
+//                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
+//                            color = Color.White,
+//                            fontSize = 12.sp,
+//                            fontWeight = FontWeight.Medium
+//                        )
+//                    }
+//                }
+//            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Header: "Heading to" and destination
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Top
             ) {
-                // Emergency button
-                Button(
-                    onClick = { /* Handle emergency */ },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = EmergencyButtonBlue
-                    ),
-                    shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center,
-                        modifier = Modifier.padding(vertical = 8.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Warning,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Emergency",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    }
-                }
+                Text(
+                    text = "Heading to",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
 
-                // SOS button
-                Button(
-                    onClick = { /* Handle SOS */ },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = EmergencyButtonBlue
-                    ),
-                    shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text(
-                        text = "SOS",
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(vertical = 8.dp)
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            // Status text
-            Text(
-                text = "Heading to",
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Progress bar with route info
-            Column {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Starting from",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = TextSecondary
-                    )
-                    
-                    Text(
-                        text = "Drop-off",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = TextSecondary
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(12.dp)
-                            .clip(CircleShape)
-                            .background(SuccessGreen)
-                    )
-
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    LinearProgressIndicator(
-                        progress = progress,
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(6.dp)
-                            .clip(RoundedCornerShape(3.dp)),
-                        color = ProgressBarGreen,
-                        trackColor = DividerColor
-                    )
-
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    Box(
-                        modifier = Modifier
-                            .size(12.dp)
-                            .clip(CircleShape)
-                            .background(Color.Black)
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Ladipo Oluwole Street",
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Medium
-                    )
-                    
+                Column(horizontalAlignment = Alignment.End) {
                     Text(
                         text = destination,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Medium
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp,
+                        textAlign = TextAlign.End
                     )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = "To drop off",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color(0xFF666666),
+                            fontSize = 11.sp
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        // Passenger avatar
+                        Box(
+                            modifier = Modifier
+                                .size(20.dp)
+                                .clip(CircleShape),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Image(
+                                painter = painterResource(id = com.lincride.R.drawable.profile_image),
+                                contentDescription = "Passenger",
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
                 }
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Time estimate
-            Text(
-                text = "Through Avenue 36 - $estimatedTime",
-                style = MaterialTheme.typography.bodyMedium,
-                color = TextSecondary
+            // Progress bar with car icon
+            ProgressBarWithCar(progress = animatedProgress)
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Timeline with drop-off points
+            DropOffTimeline(
+                passengers = passengers,
+                destination = destination,
+                estimatedTime = estimatedTime
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Destination card
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = SurfaceLight
-                ),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(12.dp)
-                            .clip(CircleShape)
-                            .background(Color.Black)
-                    )
-
-                    Spacer(modifier = Modifier.width(12.dp))
-
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = "Destination",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = TextSecondary
-                        )
-                        Text(
-                            text = destination,
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
-
-                    // Location icon
-                    Box(
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(Color.White),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "📍",
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            // Passengers info
+            // Available seats and Passengers accepted
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Column {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
                     Text(
                         text = "Available seats",
                         style = MaterialTheme.typography.labelMedium,
-                        color = TextSecondary
+                        color = Color(0xFF666666),
+                        fontSize = 12.sp
                     )
                     Text(
                         text = "1",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 28.sp
                     )
                 }
 
-                Column(horizontalAlignment = Alignment.End) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     Text(
                         text = "Passengers accepted",
                         style = MaterialTheme.typography.labelMedium,
-                        color = TextSecondary
+                        color = Color(0xFF666666),
+                        fontSize = 12.sp
                     )
-                    
+
                     // Passenger avatars
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy((-12).dp)
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
-                        passengers.forEach { passenger ->
+                        passengers.take(2).forEachIndexed { index, _ ->
                             Box(
                                 modifier = Modifier
                                     .size(32.dp)
                                     .clip(CircleShape)
-                                    .background(LincGreen),
+                                    .background(
+                                        if (index == 0) Color(0xFFFFB6C1)
+                                        else Color(0xFF9EC0FF)
+                                    )
+                                    .border(2.dp, Color.White, CircleShape),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text(
-                                    text = passenger.name.first().toString(),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color.White
+                                Image(
+                                    painter = painterResource(id = com.lincride.R.drawable.profile_image),
+                                    contentDescription = "Passenger ${index + 1}",
+                                    modifier = Modifier.size(32.dp)
                                 )
                             }
                         }
@@ -311,16 +664,285 @@ fun HeadingToDestinationBottomSheet(
             // Share Ride Info button
             OutlinedButton(
                 onClick = { /* Handle share */ },
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(12.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp),
+                shape = RoundedCornerShape(26.dp),
+                border = ButtonDefaults.outlinedButtonBorder.copy(width = 1.dp)
             ) {
                 Text(
                     text = "Share Ride Info",
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(vertical = 4.dp)
+                    fontSize = 16.sp
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun ProgressBarWithCar(progress: Float) {
+    BoxWithConstraints(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp)
+    ) {
+        val maxOffsetDp = maxWidth - 32.dp
+
+        // Gray background track
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+                .align(Alignment.CenterStart)
+                .clip(RoundedCornerShape(4.dp))
+                .background(Color(0xFFE0E0E0))
+        )
+
+        // Green progress fill
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(progress)
+                .height(8.dp)
+                .align(Alignment.CenterStart)
+                .clip(RoundedCornerShape(4.dp))
+                .background(LincGreen)
+        )
+
+        // Car icon
+        Box(
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .offset(x = maxOffsetDp * progress.coerceIn(0f, 1f))
+                .size(32.dp)
+        ) {
+            // TODO: Replace with actual car drawable
+            Icon(
+                painter = painterResource(id = com.lincride.R.drawable.car),
+                contentDescription = "car",
+                modifier = Modifier.fillMaxSize(),
+                tint = Color.Unspecified
+            )
+        }
+    }
+}
+
+@Composable
+private fun DropOffTimeline(
+    passengers: List<Passenger>,
+    destination: String,
+    estimatedTime: String
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        // Starting Point
+        TimelineItem(
+            circleColor = Color.White,
+            circleBorder = Color.Black,
+            label = "Starting Point",
+            location = "Ladipo Oluwole Street",
+            showDashedLine = true,
+            dashedLineColor = LincGreen
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Drop-off 1
+        TimelineItem(
+            circleColor = LincGreen,
+            circleBorder = null,
+            label = "Drop-off 1",
+            labelColor = LincGreen,
+            location = destination,
+            showDashedLine = true,
+            dashedLineColor = Color(0xFFFF9500), // Orange
+            avatarIndex = 0
+        )
+
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 32.dp, top = 8.dp, bottom = 8.dp)
+        ) {
+            Divider(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.Center),
+                thickness = 1.dp,
+                color = Color(0xFFE0E0E0)
+            )
+
+            // Card overlapping the divider (positioned on the right)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.Center),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Surface(
+                    color = Color(0xFFF5F5F5), // Light gray background
+                    shape = RoundedCornerShape(8.dp),
+                    shadowElevation = 0.dp
+                ) {
+                    Text(
+                        text = "Through Aromire Str. • $estimatedTime",
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Color(0xFF666666),
+                        fontSize = 11.sp,
+                        fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Drop-off 2
+        TimelineItem(
+            circleColor = Color(0xFFFF9500), // Orange
+            circleBorder = null,
+            label = "Drop-off 2",
+            labelColor = Color(0xFFFF9500),
+            location = destination,
+            showDashedLine = true,
+            dashedLineColor = Color(0xFF999999), // Gray
+            avatarIndex = 1
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Destination
+        TimelineItem(
+            circleColor = Color.Black,
+            circleBorder = null,
+            label = "Destination",
+            location = destination,
+            showDashedLine = false
+        )
+    }
+}
+@Composable
+private fun TimelineItem(
+    circleColor: Color,
+    circleBorder: Color?,
+    label: String,
+    labelColor: Color? = null,
+    location: String,
+    showDashedLine: Boolean,
+    dashedLineColor: Color = Color.Gray,
+    avatarIndex: Int? = null
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.Top
+    ) {
+        // Timeline visual (circle and dashed line)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.width(24.dp)
+        ) {
+            // Circle
+            Box(
+                modifier = Modifier
+                    .size(12.dp)
+                    .clip(CircleShape)
+                    .background(circleColor)
+                    .then(
+                        if (circleBorder != null) {
+                            Modifier.border(2.dp, circleBorder, CircleShape)
+                        } else Modifier
+                    )
+            )
+
+            // Dashed line
+            if (showDashedLine) {
+                Column(
+                    modifier = Modifier.height(40.dp),
+                    verticalArrangement = Arrangement.SpaceEvenly,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    repeat(4) {
+                        Box(
+                            modifier = Modifier
+                                .width(2.dp)
+                                .height(6.dp)
+                                .background(dashedLineColor)
+                        )
+                    }
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.width(12.dp))
+
+        // Location info
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = labelColor ?: Color(0xFF666666),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = location,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 14.sp,
+                    fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
+                )
+            }
+
+            // Avatar for drop-off points
+            if (avatarIndex != null) {
+                Box(
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = com.lincride.R.drawable.profile_image),
+                        contentDescription = "Passenger",
+                        modifier = Modifier.size(36.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun HeadingToDestinationBottomSheetPreview() {
+    LincRideTheme {
+        HeadingToDestinationBottomSheet(
+            progress = 0.65f,
+            passengers = listOf(
+                Passenger(
+                    id = "1",
+                    name = "Jane Smith",
+                    rating = 4.9f,
+                    imageUrl = null
+                ),
+                Passenger(
+                    id = "2",
+                    name = "Mike Johnson",
+                    rating = 4.7f,
+                    imageUrl = null
+                )
+            ),
+            estimatedTime = "4 min",
+            destination = "Community Road"
+        )
     }
 }
